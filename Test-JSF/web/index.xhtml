@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="formInsertar">
+            <p:panelGrid columns="2" style="margin: 0 auto">
+                <p:outputLabel value="Nombres:"/>
+                <p:inputText value="#{empleadoBean.empleado.nombres}"/>
+
+                <p:outputLabel value="Apellidos:"/>
+                <p:inputText value="#{empleadoBean.empleado.apellidos}"/>
+
+                <p:outputLabel value="Direccion:"/>
+                <p:inputText value="#{empleadoBean.empleado.direccion}"/>
+
+                <p:outputLabel value="Pais:"/>
+                <p:selectOneMenu value="#{empleadoBean.empleado.tbpais.idPais}">
+                    <f:selectItem itemLabel="--Seleccione"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Departamento:"/>
+                <p:selectOneMenu value="#{empleadoBean.empleado.tbpais.idPais}">
+                    <f:selectItem itemLabel="--Seleccione"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Municipio:"/>
+                <p:selectOneMenu value="#{empleadoBean.empleado.tbpais.idPais}">
+                    <f:selectItem itemLabel="--Seleccione"/>
+                </p:selectOneMenu>
+
+
+                <p:outputLabel value="Codigo de area:"/>
+                <p:inputText value="#{empleadoBean.empleado.codigoArea}"/>
+
+
+                <p:outputLabel value="Telefono:"/>
+                <p:inputText value="#{empleadoBean.empleado.telefono}"/>
+                
+                <p:commandButton value="Guardar"/>
+                <p:commandButton value="Cancelar"/>
+                
+            </p:panelGrid>
+        </h:form>
+         <p:separator/>
+
+        <h:form id="formMostrarEmpleado">
+            <p:dataTable id="tablaMostrarEmpleado" var="emp" value="#{empleadoBean.listar}"
+                         emptyMessage="No hay informacion disponible">
+                <p:column headerText="ID">
+                    <h:outputText value="#{emp.idEmpleado}"/>
+                </p:column>
+
+                <p:column headerText="Nombres">
+                    <h:outputText value="#{emp.nombres} #{emp.apellidos}"/>
+                </p:column>
+
+                <p:column headerText="Pais">
+                    <h:outputText value="#{emp.tbpais.nombrePais}"/>
+                </p:column>
+
+                <p:column headerText="Departamento">
+                    <h:outputText value="#{emp.tbdepartamento.nombreDepartamento}"/>
+                </p:column>
+
+                <p:column headerText="Municipio">
+                    <h:outputText value="#{emp.tbmunicipio.nombreMunicipio}"/>
+                </p:column>
+
+
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
