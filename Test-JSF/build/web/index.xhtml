@@ -20,18 +20,23 @@
                 <p:inputText value="#{empleadoBean.empleado.direccion}"/>
 
                 <p:outputLabel value="Pais:"/>
-                <p:selectOneMenu value="#{empleadoBean.empleado.tbpais.idPais}">
-                    <f:selectItem itemLabel="--Seleccione"/>
+                <p:selectOneMenu id="pais" value="#{empleadoBean.empleado.tbpais.idPais}">
+                    <f:selectItem itemLabel="--Selecione--"/>
+                    <f:ajax execute="pais" render="departamento"/>
+                    <f:selectItems value="#{empleadoBean.listarPaises}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Departamento:"/>
-                <p:selectOneMenu value="#{empleadoBean.empleado.tbpais.idPais}">
+                <p:selectOneMenu id="departamento" value="#{empleadoBean.empleado.tbdepartamento.idDepartamento}">
+                    <f:selectItems value="#{empleadoBean.listarDepartamentos}"/>
+                    <f:ajax execute="departamento" render="municipio"/>
                     <f:selectItem itemLabel="--Seleccione"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Municipio:"/>
-                <p:selectOneMenu value="#{empleadoBean.empleado.tbpais.idPais}">
+                <p:selectOneMenu  id="municipio" value="#{empleadoBean.empleado.tbmunicipio.idMunicipio}">
                     <f:selectItem itemLabel="--Seleccione"/>
+                    <f:selectItems value="#{empleadoBean.listarMunicipios}"/>
                 </p:selectOneMenu>
 
 
@@ -41,13 +46,15 @@
 
                 <p:outputLabel value="Telefono:"/>
                 <p:inputText value="#{empleadoBean.empleado.telefono}"/>
-                
-                <p:commandButton value="Guardar"/>
-                <p:commandButton value="Cancelar"/>
-                
+
+                <p:commandButton value="Guardar" actionListener="#{empleadoBean.nuevoEmpleado()}"
+                                 update=":formMostrarEmpleado:tablaMostrarEmpleado :formInsertar"/>
+                <p:commandButton value="Cancelar" actionListener="#{empleadoBean.cancelar()}"
+                                 update=":formInsertar"/>
+
             </p:panelGrid>
         </h:form>
-         <p:separator/>
+        <p:separator/>
 
         <h:form id="formMostrarEmpleado">
             <p:dataTable id="tablaMostrarEmpleado" var="emp" value="#{empleadoBean.listar}"
@@ -68,7 +75,7 @@
                     <h:outputText value="#{emp.tbdepartamento.nombreDepartamento}"/>
                 </p:column>
 
-                <p:column headerText="Municipio">
+                <p:column headerText="Municipio" >
                     <h:outputText value="#{emp.tbmunicipio.nombreMunicipio}"/>
                 </p:column>
 

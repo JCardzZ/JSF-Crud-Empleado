@@ -20,6 +20,9 @@ public class Tbempleado  implements java.io.Serializable {
      private String telefono;
 
     public Tbempleado() {
+        tbpais = new Tbpais();
+        tbdepartamento = new Tbdepartamento();
+        tbmunicipio = new Tbmunicipio();
     }
 
 	

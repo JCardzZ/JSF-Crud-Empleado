@@ -6,7 +6,10 @@
 package dao;
 
 import java.util.List;
+import model.Tbdepartamento;
 import model.Tbempleado;
+import model.Tbmunicipio;
+import model.Tbpais;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -54,5 +57,65 @@ public class EmpleadoDaoImp implements EmpleadoDao {
             }
         }
 
+    }
+
+    @Override
+    public List<Tbpais> listarPaises() {
+        List<Tbpais> listarPaises = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaccion = session.beginTransaction();
+
+        String hql = "FROM Tbpais";
+
+        try {
+            listarPaises = session.createQuery(hql).list();
+            transaccion.commit();
+            session.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaccion.rollback();
+        }
+
+        return listarPaises;
+    }
+
+    @Override
+    public List<Tbdepartamento> listarDepartamentos(Tbempleado empleado) {
+        List<Tbdepartamento> listarDepartamentos = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaccion = session.beginTransaction();
+
+        String hql = "FROM Tbdepartamento WHERE idPais = '" + empleado.getTbpais().getIdPais() + "'";
+
+        try {
+            listarDepartamentos = session.createQuery(hql).list();
+            transaccion.commit();
+            session.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaccion.rollback();
+        }
+
+        return listarDepartamentos;
+    }
+
+    @Override
+    public List<Tbmunicipio> listarMunicipios(Tbempleado empleado) {
+        List<Tbmunicipio> listarMunicipios = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaccion = session.beginTransaction();
+
+        String hql = "FROM Tbmunicipio WHERE idDepartamento = '" + empleado.getTbdepartamento().getIdDepartamento()+ "'";
+
+        try {
+            listarMunicipios = session.createQuery(hql).list();
+            transaccion.commit();
+            session.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaccion.rollback();
+        }
+
+        return listarMunicipios;
     }
 }
