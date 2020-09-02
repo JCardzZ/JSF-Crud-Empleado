@@ -3,16 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/src/java/model/Tbdepartamento.hbm.xml</file>
             <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/src/java/bean/EmpleadoBean.java</file>
-            <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/src/java/dao/EmpleadoDaoImp.java</file>
-            <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/src/java/dao/EmpleadoDao.java</file>
-            <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/src/java/model/Tbpais.hbm.xml</file>
-            <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/src/java/model/Tbpais.java</file>
-            <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/src/java/model/Tbdepartamento.java</file>
             <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/web/index.xhtml</file>
-            <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/src/java/model/Tbempleado.java</file>
-            <file>file:/C:/Users/J%20Cardoza/Documents/GitHub/JSF-Inventario/JSF-Crud-Empleado/Test-JSF/src/java/model/Tbmunicipio.hbm.xml</file>
         </group>
     </open-files>
 </project-private>

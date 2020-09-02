@@ -105,7 +105,7 @@ public class EmpleadoDaoImp implements EmpleadoDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaccion = session.beginTransaction();
 
-        String hql = "FROM Tbmunicipio WHERE idDepartamento = '" + empleado.getTbdepartamento().getIdDepartamento()+ "'";
+        String hql = "FROM Tbmunicipio WHERE idDepartamento = '" + empleado.getTbdepartamento().getIdDepartamento() + "'";
 
         try {
             listarMunicipios = session.createQuery(hql).list();
@@ -117,5 +117,41 @@ public class EmpleadoDaoImp implements EmpleadoDao {
         }
 
         return listarMunicipios;
+    }
+
+    @Override
+    public void modificarEmpleado(Tbempleado empleado) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.update(empleado);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Override
+    public void eliminarEmpleado(Tbempleado empleado) {
+  Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(empleado);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
     }
 }

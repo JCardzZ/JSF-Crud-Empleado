@@ -19,6 +19,10 @@ public interface EmpleadoDao {
 
     public List<Tbempleado> mostrarEmpleados();
 
+    public void modificarEmpleado(Tbempleado empleado);
+
+    public void eliminarEmpleado(Tbempleado empleado);
+
     public void nuevoEmpleado(Tbempleado empleado);
 
     public List<Tbpais> listarPaises();

@@ -59,6 +59,18 @@ public class EmpleadoBean implements Serializable {
         empleado = new Tbempleado();
     }
 
+    public void modificarEmpleado() {
+        EmpleadoDao eDao = new EmpleadoDaoImp();
+        eDao.modificarEmpleado(empleado);
+        empleado = new Tbempleado();
+    }
+
+    public void eliminarEmpleado() {
+        EmpleadoDao eDao = new EmpleadoDaoImp();
+        eDao.eliminarEmpleado(empleado);
+        empleado = new Tbempleado();
+    }
+
     public List<SelectItem> getListarPaises() {
         this.listarPaises = new ArrayList<SelectItem>();
         EmpleadoDao eDao = new EmpleadoDaoImp();
@@ -94,8 +106,8 @@ public class EmpleadoBean implements Serializable {
         }
         return listarMunicipios;
     }
-    
-    public void cancelar(){
+
+    public void cancelar() {
         empleado = new Tbempleado();
     }
 
