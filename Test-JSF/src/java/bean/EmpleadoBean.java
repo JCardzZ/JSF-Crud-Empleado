@@ -51,8 +51,14 @@ public class EmpleadoBean implements Serializable {
     }
 
     public List<Tbempleado> getListar() {
-        EmpleadoDao eDao = new EmpleadoDaoImp();
-        listar = eDao.mostrarEmpleados();
+        if (listar == null) {
+            try {
+                EmpleadoDao eDao = new EmpleadoDaoImp();
+                listar = eDao.mostrarEmpleados();
+            } catch (Exception e) {
+                System.out.println("Error al cargar la lista de empleados: " + e);
+            }
+        }
         return listar;
     }
 
