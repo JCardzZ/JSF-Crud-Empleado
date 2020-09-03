@@ -7,9 +7,12 @@ package bean;
 
 import dao.EmpleadoDao;
 import dao.EmpleadoDaoImp;
+import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -56,6 +59,12 @@ public class EmpleadoBean implements Serializable {
     public void nuevoEmpleado() {
         EmpleadoDao eDao = new EmpleadoDaoImp();
         eDao.nuevoEmpleado(empleado);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "El registro se guardo correctamente"));
+
+        empleado = new Tbempleado();
+    }
+
+    public void prepararNuevoEmpleado(ActionEvent actionEven) {
         empleado = new Tbempleado();
     }
 
@@ -63,12 +72,16 @@ public class EmpleadoBean implements Serializable {
         EmpleadoDao eDao = new EmpleadoDaoImp();
         eDao.modificarEmpleado(empleado);
         empleado = new Tbempleado();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "El registro se actualizazo  correctamente"));
+
     }
 
     public void eliminarEmpleado() {
         EmpleadoDao eDao = new EmpleadoDaoImp();
         eDao.eliminarEmpleado(empleado);
         empleado = new Tbempleado();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "El registro se elimino correctamente"));
+
     }
 
     public List<SelectItem> getListarPaises() {
